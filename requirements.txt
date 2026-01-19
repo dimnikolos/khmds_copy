@@ -1,0 +1,2 @@
+pypdf==6.6.0
+pyperclip==1.11.0
