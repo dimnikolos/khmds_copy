@@ -8,7 +8,7 @@
             content="Δωρεάν εργαλείο για Windows που επιτρέπει την αυτόματη εξαγωγή και αντιγραφή κωδικών ΚΗΜΔΗΣ από PDF με δεξί κλικ."
         />
         <meta name="author" content="Dimitris Nikolos" />
-        <title>KHMDS Extractor - Εργαλείο Αντιγραφής Κωδικών</title>
+        <title>ΚΗΜΔΣ Αντιγραφή - Εργαλείο Αντιγραφής Κωδικών</title>
 
         <link rel="icon" type="image/png" href="icon128.png" />
 
@@ -59,7 +59,8 @@
             .subtitle {
                 font-size: 1.2rem;
                 color: #666;
-                margin-bottom: 40px;
+                margin-bottom: 20px;
+                line-height: 1.2rem;
             }
 
             .cta-group {
@@ -125,11 +126,11 @@
             }
 
             #demoimage {
-                width: 100%;
+                width: 80%;
                 border: solid #ddd 1px;
                 border-radius: 4px;
                 margin-top: 15px;
-                box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             }
 
             footer {
@@ -151,12 +152,22 @@
     </head>
     <body>
         <main class="container">
-            <img src="./icon128.png" alt="Λογότυπο KHMDS Extractor" class="logo" />
-
             <h1>ΚΗΜΔΣ Αντιγραφή</h1>
+            <img
+                src="./context-menu-demo.png"
+                id="demoimage"
+                alt="Επίδειξη λειτουργίας δεξί κλικ"
+            />
+
             <p class="subtitle">
-                Τέλος στην πληκτρολόγηση κωδικών.<br />
-                Αντιγραφή ΑΔΑΜ, Σύμβασης & Πληρωμής με <strong>ένα δεξί κλικ</strong>.
+                Για να πάρετε τον κωδικό ΑΔΑΜ από το pdf το σημειώνετε πρώτα στο
+                χαρτί και το πληκτρολογείτε;
+            </p>
+            <p class="subtitle"><strong>Όχι πια!</strong></p>
+            <p class="subtitle">
+                Αντιγραφή του κωδικού ΑΔΑΜ (πρωτογενή, προσκλήσεις, αναθέσεις,
+                συμβάσεις και εντάλματα) με
+                <strong>ένα δεξί κλικ</strong>.
             </p>
 
             <div class="cta-group">
@@ -168,7 +179,7 @@
                 </a>
 
                 <a
-                    href="https://github.com/dimnikolos/khmds_copy"
+                    href="https://github.com/dimnikolos/khmds_copy/releases/download/khmds_copy/khmds.exe"
                     class="btn btn-github"
                     target="_blank"
                     rel="noopener"
@@ -178,36 +189,53 @@
             </div>
 
             <div class="features">
+                <strong>Εύκολη εγκατάσταση</strong>
+                <ul>
+                    <li>
+                        Κατεβάστε το
+                        <a
+                            href="https://github.com/dimnikolos/khmds_copy/releases/download/khmds_copy/khmds.exe"
+                            >αρχείο
+                        </a>
+                        εκτελέστε το και μην το διαγράψετε.
+                    </li>
+                </ul>
                 <strong>Πώς λειτουργεί;</strong>
                 <ul>
                     <li>
-                        <b>Ακρίβεια Raw Stream:</b> Διαβάζει απευθείας τον κώδικα του PDF. 
-                        Βρίσκει το ID ακόμα κι αν το κείμενο φαίνεται "κινέζικα" (mojibake).
+                        <b>Ακρίβεια Raw Stream:</b> Διαβάζει απευθείας τον
+                        κώδικα του PDF. Βρίσκει το ID ακόμα κι αν το κείμενο
+                        φαίνεται "κινέζικα" (mojibake).
                     </li>
                     <li>
-                        <b>Ενσωμάτωση στο Context Menu:</b> 
-                        Απλά κάντε <i>Δεξί Κλικ &rarr; ΚΗΜΔΣ Αντιγραφή</i> πάνω στο αρχείο.
+                        <b>Ενσωμάτωση στο Context Menu:</b>
+                        Απλά κάντε <i>Δεξί Κλικ &rarr; ΚΗΜΔΣ Αντιγραφή</i> πάνω
+                        στο αρχείο.
                     </li>
                     <li>
-                        <b>Native Ειδοποιήσεις:</b> 
-                        Εμφανίζει επιβεβαίωση (Toast Notification) και αντιγράφει αυτόματα στο πρόχειρο.
+                        <b>Native Ειδοποιήσεις:</b>
+                        Εμφανίζει επιβεβαίωση (Toast Notification) και
+                        αντιγράφει αυτόματα στο πρόχειρο.
                     </li>
                     <li>
-                        <b>Χωρίς Διαδικασίες IT:</b> 
-                        Εγκατάσταση χωρίς δικαιώματα διαχειριστή (No-Admin needed).
+                        <b>Χωρίς Διαδικασίες IT:</b>
+                        Εγκατάσταση χωρίς δικαιώματα διαχειριστή (No-Admin
+                        needed).
                     </li>
                 </ul>
-                <img src="./context-menu-demo.png" id="demoimage" alt="Επίδειξη λειτουργίας δεξί κλικ" />
             </div>
 
             <p style="margin-top: 30px; font-size: 0.9rem">
                 Ο κώδικας είναι ανοικτός και διαθέσιμος στο
-                <a href="https://github.com/dimnikolos/khmds_copy">GitHub Repository</a>.
+                <a href="https://github.com/dimnikolos/khmds_copy"
+                    >GitHub Repository</a
+                >.
             </p>
         </main>
 
         <footer>
-            &copy; 2026 Dimitris Nikolos. Δωρεάν εργαλείο ανοικτού κώδικα (MIT License).
+            &copy; 2026 Dimitris Nikolos. Δωρεάν εργαλείο ανοικτού κώδικα (MIT
+            License).
         </footer>
     </body>
 </html>
