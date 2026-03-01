@@ -3,15 +3,18 @@ import os
 import re
 import pypdf
 import pyperclip
-import winreg 
-from ctypes import windll
+
+#moved to innosetup
+#import winreg      
+#from ctypes import windll
+
 try:
     from winotify import Notification
 except ImportError:
     pass # Linux
 
 # --- CONFIGURATION ---
-MENU_NAME = "ΚΗΜΔΣ Αντιγραφή"  # Αυτό θα φαίνεται στο δεξί κλικ
+MENU_NAME = "Αντιγραφή ΑΔΑΜ"  # Αυτό θα φαίνεται στο δεξί κλικ
 CONTRACT_PATTERN = re.compile(r"\d{2}(REQ|AWRD|PROC|SYMV|PAY)\d+")
 
 def show_message(title, msg, icon_type=0x40):
@@ -22,6 +25,7 @@ def show_message(title, msg, icon_type=0x40):
     # Χρησιμοποιούμε MessageBoxW για σωστή υποστήριξη Unicode/Ελληνικών
     windll.user32.MessageBoxW(0, msg, title, icon_type)
 
+#TODO: move to innosetup
 def register_context_menu():
     """
     Προσθέτει το πρόγραμμα στο δεξί κλικ του χρήστη (HKCU).
@@ -70,39 +74,29 @@ def extract_contract_id(pdf_path):
         return None
     return None
 
+def toastshow(title,msg):
+    toast = Notification(
+        app_id= MENU_NAME,
+        title=title,
+        msg=msg,
+        duration="short",
+    )
+    toast.show()
+
+
 if __name__ == "__main__":
-    # Σενάριο 1: Εγκατάσταση (Διπλό κλικ στο exe)
+    
+    # Σενάριο 1: Διπλό κλικ στο exe
     if len(sys.argv) == 1:
-        register_context_menu()
+        toastshow("Μην σβήσετε το αρχείο","Θα το χρειαστείτε για να λειτουργεί το δεξί κλικ")
     
     # Σενάριο 2: Χρήση (Δεξί κλικ σε αρχείο -> το αρχείο έρχεται ως όρισμα)
-    # ή αλλιώς python khmds.py file
     else:
         pdf_file = sys.argv[1]
         result = extract_contract_id(pdf_file)
         
         if result:
             pyperclip.copy(result)
-            try:
-                toast = Notification(
-                    app_id= MENU_NAME,
-                    title="Αντιγράφηκε!",
-                    msg=f"Το {result} είναι στο πρόχειρο.",
-                    duration="short",
-                )
-                toast.show()
-            except NameError:
-                # Fallback για Linux
-                print(f"Αντιγράφηκε: {result}")
+            toastshow("Αντιγράφηκε!", f"Το {result} είναι στο πρόχειρο.")
         else:
-            try:
-                toast = Notification(
-                    app_id= MENU_NAME,
-                    title="Αποτυχία!",
-                    msg=f"Δεν βρέθηκε ΚΗΜΔΣ στο έγγραφο.",
-                    duration="short",
-                )
-                toast.show()
-            except NameError:
-                # Fallback για Linux
-                print(f"Δεν βρέθηκε ΚΗΜΔΣ στο έγγραφο.")
+            toastshow("Αποτυχία!", f"Δεν βρέθηκε ΑΔΑΜ στο έγγραφο.")
